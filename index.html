@@ -1,106 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel = "shortcut icon" type  = "x-icon" href = "titlePhoto.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manjil Basnet - Web Developer Portfolio</title>
+    <title>Manjil Basnet</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">MB</div>
-            <ul class="nav-links">
+            <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="hero">
-            <h1>Manjil Basnet</h1>
-            <h2>Developer & Engineer</h2>
-            <p>Crafting beautiful and functional web experiences</p>
-            <a href="#contact" class="cta-button">Get in touch</a>
+        <section id="home">
+            <div class="container">
+                <div class="home-content">
+                    <div class="about-brief">
+                        <h2>About Me</h2>
+                        <p>Hello! I'm Manjil Basnet, a passionate software engineer with a knack for creating innovative solutions. I specialize in web development and love turning complex problems into simple, beautiful, and intuitive designs.</p>
+                    </div>
+                    <div class="profile-container">
+                        <img src="titlePhoto.png " width=300 height = 300 alt="Manjil Basnet" class="profile-photo">
+                        <h1 id="typewriter"></h1>
+                        <p>Software Engineer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="neon-bg"></div>
         </section>
 
-        <section id="projects">
-            <h2>My Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="/placeholder.svg?height=200&width=300" alt="Project 1">
-                    <h3>Project 1</h3>
-                    <p>A brief description of the project and its key features.</p>
-                    <a href="#" class="project-link">View Project</a>
-                </div>
-                <div class="project-card">
-                    <img src="/placeholder.svg?height=200&width=300" alt="Project 2">
-                    <h3>Project 2</h3>
-                    <p>A brief description of the project and its key features.</p>
-                    <a href="#" class="project-link">View Project</a>
-                </div>
-                <div class="project-card">
-                    <img src="/placeholder.svg?height=200&width=300" alt="Project 3">
-                    <h3>Project 3</h3>
-                    <p>A brief description of the project and its key features.</p>
-                    <a href="#" class="project-link">View Project</a>
-                </div>
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>I am a software engineer with a passion for creating innovative solutions. With expertise in various programming languages and technologies, I strive to deliver high-quality software that meets and exceeds client expectations.</p>
             </div>
         </section>
 
         <section id="skills">
-            <h2>My Skills</h2>
-            <div class="skills-container">
-                <div class="skill">
-                    <div class="skill-name">HTML</div>
-                    <div class="skill-bar">
-                        <div class="skill-level" style="width: 90%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <div class="skill-name">CSS</div>
-                    <div class="skill-bar">
-                        <div class="skill-level" style="width: 85%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <div class="skill-name">JavaScript</div>
-                    <div class="skill-bar">
-                        <div class="skill-level" style="width: 80%;"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <div class="skill-name">React</div>
-                    <div class="skill-bar">
-                        <div class="skill-level" style="width: 75%;"></div>
-                    </div>
+            <div class="container">
+                <h2>Skills</h2>
+                <ul class="skills-list">
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>React</li>
+                    <li>Node.js</li>
+                    <li>HTML/CSS</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="project-grid">
+                    <a href="project1.html" class="project">
+                        <img src="eCommerce.jpg" height = 300 width = 300 alt="E-commerce Platform">
+                        <h3>E-commerce Platform</h3>
+                        <p>A full-stack e-commerce solution with React and Node.js</p>
+                    </a>
+                    <a href="project2.html" class="project">
+                        <img src="chatBOT.jpg"height=200 width=300 alt="AI Chatbot">
+                        <h3>AI Chatbot</h3>
+                        <p>An intelligent chatbot powered by machine learning</p>
+                    </a>
+                    <a href="project3.html" class="project">
+                        <img src="fitness.jpg"height=200 width=300 alt="Mobile Fitness App">
+                        <h3>Mobile Fitness App</h3>
+                        <p>A cross-platform mobile app for fitness tracking</p>
+                    </a>
                 </div>
             </div>
         </section>
 
         <section id="contact">
-            <h2>Get in Touch</h2>
-            <form id="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+            <div class="container">
+                <h2>Contact</h2>
+                <form id="contact-form">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Manjil Basnet. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2023 Manjil Basnet. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
