@@ -91,4 +91,42 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show a success message (you can replace this with a more user-friendly notification)
         alert('Thank you for your message! I will get back to you soon.');
     });
+
+    // Mobile menu toggle
+    const header = document.querySelector('header');
+    const nav = document.querySelector('nav');
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', () => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            header.style.transform = 'translateY(0)';
+        }
+        lastScrollTop = scrollTop;
+    });
+
+    // Add active class to current section in navigation
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').slice(1) === current) {
+                link.classList.add('active');
+            }
+        });
+    });
 });
+

@@ -7,6 +7,7 @@
     --secondary-color: #ff00ff;
     --accent-color: #ffff00;
     --form-bg-color: rgba(255, 255, 255, 0.05);
+    --nav-bg-color: rgba(10, 10, 10, 0.8);
 }
 
 * {
@@ -29,13 +30,18 @@ body {
 }
 
 header {
-    background-color: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+nav {
+    background-color: var(--nav-bg-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 15px 15px;
 }
 
 nav ul {
@@ -52,11 +58,30 @@ nav ul li {
 nav ul li a {
     color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite;
 }
 
 nav ul li a:hover {
-    color: var(--primary-color);
+    color: var(--bg-color);
+    transform: translateY(-3px);
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 section {
@@ -64,11 +89,30 @@ section {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 section.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+section.visible::before {
+    opacity: 1;
 }
 
 h1, h2 {
@@ -86,6 +130,23 @@ h2 {
     font-size: 2rem;
     font-weight: 600;
     color: var(--secondary-color);
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+section.visible h2::after {
+    width: 100%;
 }
 
 #home {
@@ -119,7 +180,16 @@ h2 {
     height: 200px;
     border-radius: 50%;
     border: 4px solid var(--primary-color);
-    animation: pulse 2s infinite;
+    animation: pulse 2s infinite, rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 #home p {
@@ -138,6 +208,20 @@ h2 {
         linear-gradient(-45deg, var(--secondary-color) 0%, transparent 70%);
     opacity: 0.05;
     z-index: -1;
+    animation: neonPulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+    0% {
+        opacity: 0.05;
+    }
+    100% {
+        opacity: 0.1;
+    }
+}
+
+#about {
+    background: linear-gradient(135deg, rgba(0,255,255,0.1) 0%, rgba(255,0,255,0.1) 100%);
 }
 
 .skills-list {
@@ -154,12 +238,29 @@ h2 {
     margin: 0.5rem;
     border-radius: 5px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    animation: skillFadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes skillFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .skills-list li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 10px var(--primary-color);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 15px var(--primary-color);
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+#projects {
+    background: linear-gradient(135deg, rgba(255,255,0,0.1) 0%, rgba(0,255,255,0.1) 100%);
 }
 
 .project-grid {
@@ -177,11 +278,29 @@ h2 {
     text-decoration: none;
     color: var(--text-color);
     display: block;
+    position: relative;
+}
+
+.project::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
 }
 
 .project:hover {
     transform: translateY(-10px);
     box-shadow: 0 0 20px var(--primary-color);
+}
+
+.project:hover::before {
+    opacity: 0.1;
 }
 
 .project img {
@@ -201,6 +320,10 @@ h2 {
 
 .project p {
     padding: 1rem;
+}
+
+#contact {
+    background: linear-gradient(135deg, rgba(255,0,255,0.1) 0%, rgba(255,255,0,0.1) 100%);
 }
 
 form {
@@ -271,6 +394,24 @@ footer {
     }
 }
 
+#contact .container {
+    background-color: var(--form-bg-color);
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color);
+    padding: 2rem;
+    transition: box-shadow 0.3s ease;
+}
+
+#contact .container:hover {
+    box-shadow: 0 0 30px var(--primary-color), 0 0 60px var(--secondary-color);
+}
+
+#contact h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
     .home-content {
         flex-direction: column;
@@ -289,21 +430,58 @@ footer {
     nav ul li {
         margin: 0.5rem 0;
     }
+
+    nav ul li a {
+        display: block;
+        text-align: center;
+        padding: 0.75rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-list li {
+        width: calc(50% - 1rem);
+        text-align: center;
+    }
+
+    #home {
+        padding-top: 4rem;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
 }
 
-#contact .container {
-    background-color: var(--form-bg-color);
-    border-radius: 10px;
-    box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color);
-    padding: 2rem;
-    transition: box-shadow 0.3s ease;
-}
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
 
-#contact .container:hover {
-    box-shadow: 0 0 30px var(--primary-color), 0 0 60px var(--secondary-color);
-}
+    h1 {
+        font-size: 2rem;
+    }
 
-#contact h2 {
-    text-align: center;
-    margin-bottom: 2rem;
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    #home p {
+        font-size: 1.2rem;
+    }
+
+    .skills-list li {
+        width: 100%;
+    }
 }
