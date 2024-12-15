@@ -12,6 +12,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#qualifications">Qualifications</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -23,12 +24,12 @@
         <section id="home">
             <div class="container">
                 <div class="home-content">
-                    <div class="about-brief">
-                        <h2>About Me</h2>
+                    <div class="about-brief fade-in">
+                        <h2>Welcome</h2>
                         <p>Hello! I'm Manjil Basnet, a passionate software engineer with a knack for creating innovative solutions. I specialize in web development and love turning complex problems into simple, beautiful, and intuitive designs.</p>
                     </div>
-                    <div class="profile-container">
-                        <img src="titlePhoto.png" height=300 width=300 alt="Manjil Basnet" class="profile-photo">
+                    <div class="profile-container float-animation">
+                        <img src="/placeholder.svg?height=300&width=300" alt="Manjil Basnet" class="profile-photo">
                         <h1 id="typewriter"></h1>
                         <p>Software Engineer</p>
                     </div>
@@ -38,14 +39,41 @@
         </section>
 
         <section id="about">
-            <div class="container">
+            <div class="container slide-in-left">
                 <h2>About Me</h2>
                 <p>I am a software engineer with a passion for creating innovative solutions. With expertise in various programming languages and technologies, I strive to deliver high-quality software that meets and exceeds client expectations. My approach combines creativity with technical proficiency to solve complex problems efficiently.</p>
             </div>
         </section>
 
+        <section id="qualifications">
+            <div class="container slide-in-right">
+                <h2>My Qualifications</h2>
+                <div class="qualification-item">
+                    <img src="/placeholder.svg?height=100&width=100" alt="University of Technology" class="qualification-image">
+                    <div class="qualification-content">
+                        <h3>Bachelor of Science in Computer Science</h3>
+                        <p>University of Technology, 2015-2019</p>
+                    </div>
+                </div>
+                <div class="qualification-item">
+                    <img src="/placeholder.svg?height=100&width=100" alt="Tech Academy" class="qualification-image">
+                    <div class="qualification-content">
+                        <h3>Full Stack Web Development Bootcamp</h3>
+                        <p>Tech Academy, 2020</p>
+                    </div>
+                </div>
+                <div class="qualification-item">
+                    <img src="/placeholder.svg?height=100&width=100" alt="Amazon Web Services" class="qualification-image">
+                    <div class="qualification-content">
+                        <h3>AWS Certified Solutions Architect</h3>
+                        <p>Amazon Web Services, 2021</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="skills">
-            <div class="container">
+            <div class="container fade-in">
                 <h2>Skills</h2>
                 <ul class="skills-list">
                     <li>JavaScript</li>
@@ -62,21 +90,21 @@
         </section>
 
         <section id="projects">
-            <div class="container">
+            <div class="container slide-in-left">
                 <h2>Projects</h2>
                 <div class="project-grid">
                     <a href="project1.html" class="project">
-                        <img src="eCommerce.jpg" height = 300 width = 300 alt="E-commerce Platform">
+                        <img src="/placeholder.svg?height=200&width=300" alt="E-commerce Platform">
                         <h3>E-commerce Platform</h3>
                         <p>A full-stack e-commerce solution with React and Node.js</p>
                     </a>
                     <a href="project2.html" class="project">
-                        <img src="chatBOT.jpg" height=200 width=300 alt="AI Chatbot">
+                        <img src="/placeholder.svg?height=200&width=300" alt="AI Chatbot">
                         <h3>AI Chatbot</h3>
                         <p>An intelligent chatbot powered by machine learning</p>
                     </a>
                     <a href="project3.html" class="project">
-                        <img src="fitness.jpg" height = 300 width = 300 alt="Mobile Fitness App">
+                        <img src="/placeholder.svg?height=200&width=300" alt="Mobile Fitness App">
                         <h3>Mobile Fitness App</h3>
                         <p>A cross-platform mobile app for fitness tracking</p>
                     </a>
@@ -85,7 +113,7 @@
         </section>
 
         <section id="contact">
-            <div class="container">
+            <div class="container slide-in-right">
                 <h2>Contact</h2>
                 <form id="contact-form">
                     <input type="text" name="name" placeholder="Your Name" required>

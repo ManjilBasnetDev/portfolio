@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                if (entry.target.classList.contains('skills-list')) {
+                    animateSkills(entry.target);
+                }
             }
         });
     }, { threshold: 0.1 });
@@ -38,8 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Skill animation
-    const skillsList = document.querySelector('.skills-list');
-    if (skillsList) {
+    function animateSkills(skillsList) {
         skillsList.querySelectorAll('li').forEach((skill, index) => {
             skill.style.animationDelay = `${index * 0.1}s`;
             skill.style.animation = `fadeInUp 0.5s ease forwards`;
