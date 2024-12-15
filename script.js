@@ -14,10 +14,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     typeWriter();
 
+    // Hamburger menu toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+        const isClickInsideNav = navToggle.contains(event.target) || navMenu.contains(event.target);
+        if (!isClickInsideNav && navMenu.classList.contains('show')) {
+            navMenu.classList.remove('show');
+        }
+    });
+
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
+            navMenu.classList.remove('show');
             document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
             });
@@ -57,22 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         project.addEventListener('mouseleave', () => {
             project.style.transform = 'translateY(0)';
-            project.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.3)';
+            project.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
         });
     });
-
-    // Neon background animation
-    const neonBg = document.querySelector('.neon-bg');
-    let hue = 0;
-    function animateNeonBg() {
-        hue = (hue + 1) % 360;
-        neonBg.style.background = `
-            linear-gradient(45deg, hsl(${hue}, 100%, 50%) 0%, transparent 70%),
-            linear-gradient(-45deg, hsl(${hue + 60}, 100%, 50%) 0%, transparent 70%)
-        `;
-        requestAnimationFrame(animateNeonBg);
-    }
-    animateNeonBg();
 
     // Form submission handling
     const form = document.getElementById('contact-form');
@@ -94,21 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Thank you for your message! I will get back to you soon.');
     });
 
-    // Mobile menu toggle
-    const header = document.querySelector('header');
-    const nav = document.querySelector('nav');
-    let lastScrollTop = 0;
-
-    window.addEventListener('scroll', () => {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop) {
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            header.style.transform = 'translateY(0)';
-        }
-        lastScrollTop = scrollTop;
-    });
-
     // Add active class to current section in navigation
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav ul li a');
@@ -128,6 +117,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (link.getAttribute('href').slice(1) === current) {
                 link.classList.add('active');
             }
+        });
+    });
+
+    // Home link functionality
+    const homeLink = document.getElementById('home-link');
+    homeLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     });
 });

@@ -5,19 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manjil Basnet</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#qualifications">Qualifications</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <div class="nav-container">
+                <nav>
+                    <div id="home-link" class="nav-logo">MB</div>
+                    <button class="nav-toggle" aria-label="toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="nav-menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#qualifications">Qualifications</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -29,7 +37,7 @@
                         <p>Hello! I'm Manjil Basnet, a passionate software engineer with a knack for creating innovative solutions. I specialize in web development and love turning complex problems into simple, beautiful, and intuitive designs.</p>
                     </div>
                     <div class="profile-container float-animation">
-                        <img src="/placeholder.svg?height=300&width=300" alt="Manjil Basnet" class="profile-photo">
+                        <img src="titlePhoto.png" height = 300 width = 300 alt="Manjil Basnet" class="profile-photo">
                         <h1 id="typewriter"></h1>
                         <p>Software Engineer</p>
                     </div>
@@ -38,35 +46,26 @@
             <div class="neon-bg"></div>
         </section>
 
-        <section id="about">
-            <div class="container slide-in-left">
-                <h2>About Me</h2>
-                <p>I am a software engineer with a passion for creating innovative solutions. With expertise in various programming languages and technologies, I strive to deliver high-quality software that meets and exceeds client expectations. My approach combines creativity with technical proficiency to solve complex problems efficiently.</p>
-            </div>
-        </section>
-
         <section id="qualifications">
             <div class="container slide-in-right">
                 <h2>My Qualifications</h2>
-                <div class="qualification-item">
-                    <img src="/placeholder.svg?height=100&width=100" alt="University of Technology" class="qualification-image">
-                    <div class="qualification-content">
-                        <h3>Bachelor of Science in Computer Science</h3>
-                        <p>University of Technology, 2015-2019</p>
-                    </div>
-                </div>
-                <div class="qualification-item">
-                    <img src="/placeholder.svg?height=100&width=100" alt="Tech Academy" class="qualification-image">
-                    <div class="qualification-content">
-                        <h3>Full Stack Web Development Bootcamp</h3>
-                        <p>Tech Academy, 2020</p>
-                    </div>
-                </div>
-                <div class="qualification-item">
-                    <img src="/placeholder.svg?height=100&width=100" alt="Amazon Web Services" class="qualification-image">
-                    <div class="qualification-content">
-                        <h3>AWS Certified Solutions Architect</h3>
-                        <p>Amazon Web Services, 2021</p>
+                <div class="qualifications-container">
+                    <div class="qualification-buttons">
+                        <button class="qualification-button">
+                            <img src="/placeholder.svg?height=100&width=100" alt="University of Technology">
+                            <h3>Bachelor of Science in Computer Science</h3>
+                            <p>University of Technology, 2015-2019</p>
+                        </button>
+                        <button class="qualification-button">
+                            <img src="/placeholder.svg?height=100&width=100" alt="Tech Academy">
+                            <h3>Full Stack Web Development Bootcamp</h3>
+                            <p>Tech Academy, 2020</p>
+                        </button>
+                        <button class="qualification-button">
+                            <img src="/placeholder.svg?height=100&width=100" alt="Amazon Web Services">
+                            <h3>AWS Certified Solutions Architect</h3>
+                            <p>Amazon Web Services, 2021</p>
+                        </button>
                     </div>
                 </div>
             </div>
