@@ -21,6 +21,7 @@
                         <li><a href="#qualifications">Qualifications</a></li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
+                        <li><a href="#quiz">Quiz</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
@@ -35,13 +36,13 @@
                     <div class="about-brief fade-in">
                         <h2>Welcome</h2>
                         <p>Hello! I'm Manjil Basnet, a dedicated computer science student at Softwarica College, Coventry University, majoring in Computer Science with Artificial Intelligence. 
-                            I enjoy exploring new technologies and finding innovative solutions to complex problems.
+                            I enjoy exploring new technologies and finding innovative solutions to complex problems. Check out my Python tutorials on YouTube and test your knowledge with interactive quizzes!
                            </p>
                     </div>
                     <div class="profile-container float-animation">
                         <img src="titlePhoto.png" height = 300 width = 300 alt="Manjil Basnet" class="profile-photo">
                         <h1 id="typewriter"></h1>
-                        <p>IT Student</p>
+                        <p>IT Student & Python Educator</p>
                     </div>
                 </div>
             </div>
@@ -86,6 +87,8 @@
                     <li>Git</li>
                     <li>RESTful APIs</li>
                     <li>Agile Methodologies</li>
+                    <li>Machine Learning</li>
+                    <li>Firebase</li>
                 </ul>
             </div>
         </section>
@@ -113,6 +116,162 @@
             </div>
         </section>
 
+        <!-- Enhanced Quiz Section with Card Layout -->
+        <section id="quiz">
+            <div class="container">
+                <h2><i class="fas fa-graduation-cap"></i> Interactive Quiz Hub</h2>
+                <p class="quiz-intro">Test your programming knowledge with comprehensive quizzes! Perfect companion to my YouTube Python tutorials.</p>
+                
+                <!-- Quiz Modal Overlay -->
+                <div class="quiz-overlay hidden" id="quiz-overlay">
+                    <div class="quiz-modal">
+                        <div class="quiz-modal-header">
+                            <h3 id="quiz-modal-title">Quiz</h3>
+                            <button class="close-quiz" onclick="closeQuiz()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="quiz-modal-content" id="quiz-modal-content">
+                            <!-- Dynamic content will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Quiz Interface -->
+                <div class="quiz-main-container">
+                    <!-- User Input Card -->
+                    <div class="quiz-card" id="user-setup">
+                        <div class="card-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3>Welcome to Quiz Hub</h3>
+                        <p>Enter your name to track your progress and compete with others!</p>
+                        <div class="input-group">
+                            <input type="text" id="username" placeholder="Enter your name" required>
+                            <button onclick="startQuiz()" class="primary-btn">
+                                <i class="fas fa-rocket"></i> Start Learning!
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- User Progress Card -->
+                    <div class="quiz-card hidden" id="progress-card">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Your Learning Progress</h3>
+                        <div id="progress-list" class="progress-grid"></div>
+                    </div>
+
+                    <!-- Language Selection Card -->
+                    <div class="quiz-card hidden" id="language-card">
+                        <div class="card-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Choose Programming Language</h3>
+                        <div class="language-options">
+                            <button class="language-option active" onclick="selectLanguage('python')">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                                <small>7 Topics Available</small>
+                            </button>
+                            <button class="language-option disabled" title="Coming Soon">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript</span>
+                                <small>Coming Soon</small>
+                            </button>
+                            <button class="language-option disabled" title="Coming Soon">
+                                <i class="fab fa-java"></i>
+                                <span>Java</span>
+                                <small>Coming Soon</small>
+                            </button>
+                        </div>
+                        <button class="secondary-btn" onclick="goBackToStart()" style="margin-top: 1rem;">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                    </div>
+
+                    <!-- Python Topics Card -->
+                    <div class="quiz-card hidden" id="topics-card">
+                        <div class="card-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3>Python Learning Path</h3>
+                        <p>Choose a topic to test your knowledge. Each quiz contains 10-15 questions with increasing difficulty.</p>
+                        
+                        <div class="topics-grid">
+                            <button class="topic-card" onclick="loadTopic('basics')">
+                                <div class="topic-icon basics">
+                                    <i class="fas fa-play-circle"></i>
+                                </div>
+                                <h4>Python Basics</h4>
+                                <p>Variables, Comments, Syntax, Input/Output</p>
+                                <span class="difficulty">Beginner</span>
+                            </button>
+
+                            <button class="topic-card" onclick="loadTopic('datatypes')">
+                                <div class="topic-icon datatypes">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <h4>Data Types</h4>
+                                <p>Strings, Lists, Tuples, Sets, Dictionaries</p>
+                                <span class="difficulty">Beginner</span>
+                            </button>
+
+                            <button class="topic-card" onclick="loadTopic('control')">
+                                <div class="topic-icon control">
+                                    <i class="fas fa-code-branch"></i>
+                                </div>
+                                <h4>Control Flow</h4>
+                                <p>If-else, Loops, Break, Continue</p>
+                                <span class="difficulty">Intermediate</span>
+                            </button>
+
+                            <button class="topic-card" onclick="loadTopic('functions')">
+                                <div class="topic-icon functions">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <h4>Functions</h4>
+                                <p>Parameters, Return, Lambda, Scope</p>
+                                <span class="difficulty">Intermediate</span>
+                            </button>
+
+                            <button class="topic-card" onclick="loadTopic('oop')">
+                                <div class="topic-icon oop">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <h4>OOP Concepts</h4>
+                                <p>Classes, Objects, Inheritance, Polymorphism</p>
+                                <span class="difficulty">Advanced</span>
+                            </button>
+
+                            <button class="topic-card" onclick="loadTopic('files')">
+                                <div class="topic-icon files">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <h4>File Handling</h4>
+                                <p>Reading, Writing, File Modes, CSV</p>
+                                <span class="difficulty">Intermediate</span>
+                            </button>
+
+                            <button class="topic-card" onclick="loadTopic('exceptions')">
+                                <div class="topic-icon exceptions">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <h4>Exception Handling</h4>
+                                <p>Try-except, Finally, Custom Exceptions</p>
+                                <span class="difficulty">Advanced</span>
+                            </button>
+                        </div>
+
+                        <button class="secondary-btn" onclick="goBackToLanguages()" style="margin-top: 2rem;">
+                            <i class="fas fa-arrow-left"></i> Back to Languages
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact">
             <div class="container slide-in-right">
                 <h2>Contact</h2>
@@ -133,6 +292,37 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- Firebase SDKs -->
+    <script type="module">
+        // Import Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, query, where, orderBy } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+
+        // Your Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyABrTpV_0WPb1zKF9zaemGWzwP4rHeS2e4",
+            authDomain: "portfoliodb-e5f5e.firebaseapp.com",
+            projectId: "portfoliodb-e5f5e",
+            storageBucket: "portfoliodb-e5f5e.firebasestorage.app",
+            messagingSenderId: "989773546286",
+            appId: "1:989773546286:web:81fa8ebbb673ad6b35f0bf",
+            measurementId: "G-QB350TQ5RP"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        
+        // Make Firebase functions globally available
+        window.db = db;
+        window.addDoc = addDoc;
+        window.collection = collection;
+        window.getDocs = getDocs;
+        window.query = query;
+        window.where = where;
+        window.orderBy = orderBy;
+
+        console.log("Firebase initialized successfully!");
+    </script>
 </body>
 </html>
-
