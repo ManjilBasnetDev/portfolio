@@ -64,7 +64,7 @@ const quizData = {
             // Hard Level
             {
                 question: "What will be the output of: print(bool([]), bool([0]), bool(['']))?",
-                options: ["False False False", "True True True", "False False True", "True False True"],
+                options: ["False False False", "True True True", "False True True", "True False True"],
                 correct: 2,
                 explanation: "Empty list is False, list with 0 is True (not empty), list with empty string is True (not empty).",
                 difficulty: "hard"
@@ -1263,7 +1263,7 @@ async function saveQuizProgress(topic, correct, total, score) {
             topic: topic,
             correct: correct,
             total: total,
-            score: score,
+            score: score, 
             attempts: existingAttempts + 1,
             timestamp: new Date().toISOString(),
             answers: userAnswers,
