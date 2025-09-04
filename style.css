@@ -85,14 +85,37 @@ nav {
 }
 
 .nav-toggle {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    background: none;
+    display: none;
+    background: transparent;
     border: none;
-    font-size: 1.5rem;
-    color: var(--primary-color);
+    width: 35px;
+    height: 35px;
     cursor: pointer;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-toggle span,
+.nav-toggle::before,
+.nav-toggle::after {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 3px;
+    background: #000000;
+    margin: 2px 0;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle::before {
+    transform: translateY(-4px);
+}
+
+.nav-toggle::after {
+    transform: translateY(2px);
 }
 
 nav ul {
@@ -1354,33 +1377,61 @@ footer {
 }
 
 /* Tablet Responsiveness */
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width: 769px) {
     .container {
-        padding: 0 1.5rem;
+        padding: 0 2rem;
     }
     
     .project-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+        gap: 2rem;
     }
     
     .qualification-buttons {
-        gap: 1.5rem;
+        gap: 2rem;
     }
     
     .qualification-button {
-        width: calc(50% - 0.75rem);
+        width: calc(50% - 1rem);
     }
     
     .topics-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .home-content {
+        padding: 2.5rem;
+    }
+
+    .profile-photo {
+        width: 220px;
+        height: 220px;
     }
 }
 
-/* Mobile Responsiveness */
+/* Mobile Responsiveness - All Screen Sizes */
 @media (max-width: 768px) {
     .nav-toggle {
-        display: block;
+        display: flex !important;
+        margin-left: auto;
+    }
+
+    nav {
+        padding: 0.75rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nav-logo {
+        font-size: 1.3rem;
+    }
+    
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
     }
 
     nav ul {
@@ -1390,10 +1441,11 @@ footer {
         top: 100%;
         left: 0;
         right: 0;
-        background-color: var(--nav-bg-color);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background: white;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         border-radius: 0 0 15px 15px;
-        backdrop-filter: blur(10px);
+        padding: 0;
+        z-index: 999;
     }
 
     nav ul.show {
@@ -1403,11 +1455,29 @@ footer {
     nav ul li {
         margin: 0;
         text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    nav ul li:last-child {
+        border-bottom: none;
     }
 
     nav ul li a {
         display: block;
-        padding: 1rem;
+        padding: 1.2rem;
+        color: #1e293b;
+        font-weight: 500;
+    }
+
+    #home {
+        padding-top: 1rem;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+    
+    section {
+        padding: 3rem 0;
     }
 
     .container {
@@ -1416,180 +1486,195 @@ footer {
 
     .home-content {
         flex-direction: column;
-        padding: 2rem;
-    }
-
-    .about-brief, .profile-container {
-        width: 100%;
-        padding: 1rem 0;
-    }
-
-    .about-brief {
-        padding-right: 0;
+        padding: 2rem 1rem;
+        gap: 2rem;
         text-align: center;
     }
 
+    .about-brief {
+        order: 2;
+        padding-right: 0;
+    }
+
+    .profile-container {
+        order: 1;
+    }
+
     h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        line-height: 1.2;
     }
 
     h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .profile-photo {
-        width: 200px;
-        height: 200px;
+        width: min(200px, 60vw);
+        height: min(200px, 60vw);
+        margin: 0 auto 1rem;
     }
 
     .qualification-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 1.5rem;
     }
 
     .qualification-button {
         width: 100%;
-        max-width: 350px;
-        margin-bottom: 1rem;
+        max-width: 400px;
+        padding: 1.5rem;
     }
     
     .qualification-button img {
-        height: 120px;
+        height: min(120px, 25vw);
         object-fit: contain;
     }
 
     .topics-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
     }
     
     .project-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 0 1rem;
+        gap: 2rem;
     }
     
     .project img {
-        height: 180px;
-    }
-    
-    .project {
-        max-width: 100%;
+        height: min(200px, 40vw);
     }
 
     .language-options {
         grid-template-columns: 1fr;
-    }
-
-    .quiz-modal {
-        width: 95%;
-        margin: 1rem;
-    }
-
-    .quiz-modal-header {
-        padding: 1.5rem;
-    }
-
-    .quiz-modal-content {
-        padding: 1.5rem;
-    }
-
-    .quiz-controls {
-        flex-direction: column;
         gap: 1rem;
     }
 
-    .result-actions {
-        flex-direction: column;
-    }
-
     .quiz-card {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1rem;
+        margin: 0 0.5rem 2rem;
     }
 
     .score-circle {
-        width: 150px;
-        height: 150px;
+        width: min(150px, 40vw);
+        height: min(150px, 40vw);
     }
 
     .score-circle::before {
-        width: 110px;
-        height: 110px;
+        width: min(110px, 30vw);
+        height: min(110px, 30vw);
     }
 
     .score-text {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    #home p {
-        font-size: 1rem;
+        font-size: min(2rem, 8vw);
     }
 
     .skills-list li {
-        width: calc(100% - 1rem);
-        margin: 0.25rem 0.5rem;
-        text-align: center;
+        margin: 0.5rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    nav {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .nav-logo {
+        font-size: 1.1rem;
+    }
+
+    h1 {
+        font-size: min(1.8rem, 8vw);
+    }
+
+    h2 {
+        font-size: min(1.4rem, 6vw);
+    }
+
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .home-content {
+        padding: 1.5rem 0.75rem;
+        gap: 1.5rem;
+    }
+
+    #home p {
+        font-size: min(1rem, 4vw);
+        line-height: 1.5;
+    }
+
+    .profile-photo {
+        width: min(160px, 50vw);
+        height: min(160px, 50vw);
+    }
+
+    .qualification-button {
+        padding: 1.2rem 0.8rem;
+    }
+
+    .qualification-button img {
+        height: min(100px, 20vw);
     }
 
     .topic-card {
-        padding: 1.5rem;
+        padding: 1.2rem 0.8rem;
     }
 
     .quiz-card {
-        padding: 1.5rem 1rem;
+        padding: 1.5rem 0.75rem;
+        margin: 0 0.25rem 1.5rem;
     }
 
-    .quiz-modal {
-        width: 98%;
-        margin: 0.5rem;
-    }
-    
     .project img {
-        height: 150px;
+        height: min(150px, 35vw);
     }
-    
+
     .project h3 {
-        font-size: 1.1rem;
+        font-size: min(1.1rem, 4.5vw);
         padding: 1rem 1rem 0.5rem;
     }
-    
+
     .project p {
-        font-size: 0.9rem;
+        font-size: min(0.9rem, 3.8vw);
         padding: 0 1rem 1rem;
+        line-height: 1.4;
     }
-    
-    .qualification-button img {
-        height: 100px;
-        object-fit: contain;
+
+    .skills-list li {
+        margin: 0.3rem;
+        padding: 0.5rem 1rem;
+        font-size: min(0.85rem, 3.5vw);
     }
-    
+
+    .youtube-link {
+        padding: 0.6rem 1.2rem;
+        font-size: min(0.9rem, 3.8vw);
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+
     .home-content {
-        flex-direction: column;
-        padding: 1.5rem;
-        gap: 2rem;
+        padding: 1rem 0.5rem;
     }
-    
-    .about-brief {
-        order: 2;
-        text-align: center;
+
+    .qualification-button,
+    .topic-card,
+    .quiz-card {
+        margin: 0 0 1rem;
     }
-    
-    .profile-container {
-        order: 1;
-    }
-    
-    .profile-photo {
-        width: 180px;
-        height: 180px;
+
+    nav ul li a {
+        padding: 1rem 0.5rem;
     }
 }

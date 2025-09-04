@@ -1,3 +1,36 @@
+// Maintenance message function
+function showMaintenanceMessage(event) {
+    event.preventDefault();
+    
+    const notification = document.createElement('div');
+    notification.textContent = 'Currently in Maintenance Phase';
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        color: white;
+        font-weight: 600;
+        z-index: 10000;
+        background: #3b82f6;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 10);
+    
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
 // Portfolio JavaScript - Secure and optimized implementation
 class PortfolioManager {
     constructor() {
@@ -11,7 +44,7 @@ class PortfolioManager {
         this.initProjectEffects();
         this.initContactForm();
         this.initNavigationHighlighting();
-        this.initThemeToggle();
+
     }
 
     initTypewriter() {
@@ -226,6 +259,8 @@ class PortfolioManager {
             });
         });
     }
+
+
 }
 
 // Initialize portfolio when DOM loads
@@ -233,32 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new PortfolioManager();
 });
 
-// Maintenance message function
-function showMaintenanceMessage(event) {
-    event.preventDefault();
-    
-    const notification = document.createElement('div');
-    notification.className = 'notification info';
-    notification.textContent = 'Currently in Maintenance Phase';
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 1rem 2rem;
-        border-radius: 8px;
-        color: white;
-        font-weight: 600;
-        z-index: 10000;
-        animation: slideIn 0.3s ease;
-        background: #3b82f6;
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.remove();
-    }, 3000);
-}
+
 
 // Add CSS for notifications
 const style = document.createElement('style');

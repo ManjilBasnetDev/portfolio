@@ -714,21 +714,9 @@ class QuizManager {
         this.closeQuiz();
         this.currentTopic = '';
         
-        // Reset to initial state - show username input
-        this.hideElement('topics-card');
-        this.hideElement('language-card');
+        // Just go back to topics selection - keep user logged in
         this.hideElement('progress-card');
-        this.showElement('user-setup');
-        
-        // Clear inputs
-        const usernameInput = document.getElementById('username');
-        const pinInput = document.getElementById('userpin');
-        
-        if (usernameInput) usernameInput.value = '';
-        if (pinInput) pinInput.value = '';
-        
-        // Reset user state
-        this.currentUser = '';
+        this.showElement('topics-card');
     }
 
     closeQuiz() {
